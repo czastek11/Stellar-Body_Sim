@@ -2,6 +2,7 @@
 This is program used to simulate multiple body problems using newtonian mechanics
 
 Instructions regarding running and using the program (in polish):
+
 program do planet jest napisany obiektowo
 każdy obiekt klasy reprezentuje niezafiksowany obiekt w przestrzeni kosmicznej
 zawiera on w polach wskaźnik na tablice wskaźników wszytkich ciał niezafiksowanych(wspólne pole w c++ nazywa się to static)
