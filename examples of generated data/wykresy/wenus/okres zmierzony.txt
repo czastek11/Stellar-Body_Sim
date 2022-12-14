@@ -1,0 +1,2 @@
+1.	 3.1776e+07 s =367.777 dni (jest różne od 365 bo cout zwraca za mało cyfr po przecinku naukowego zapisu)
+2.	3.17792e+07 s =367.81 dni

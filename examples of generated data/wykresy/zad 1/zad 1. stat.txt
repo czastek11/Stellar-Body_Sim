@@ -1,0 +1,9 @@
+G=1
+M=10000
+
+m=5
+|r0|=r0x=100
+|v0|=v0x=10
+
+h=1 (maks zachowane)
+h=3 (drugi przykład)

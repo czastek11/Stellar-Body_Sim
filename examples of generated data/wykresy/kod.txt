@@ -1,0 +1,119 @@
+cd 'F:\nauka\pwr\rok 2 semestr 4 (letni)\el. mod. numerycznego\Układ Planetarny'
+
+plot "obiekt 1.data" using 1:2 with line
+set mxtics 5
+set mytics 5
+set linestyle 1 lt 1 lw 2 lc rgb "#B9B9B9"
+set linestyle 2 lt 0 lw 1 lc rgb "#B9B9B9"
+set grid xtics ytics mxtics mytics  ls 1 , ls 2
+
+replot
+
+, "obiekt 2.data" using 1:2 with line
+
+cd 'F:\nauka\pwr\rok 2 semestr 4 (letni)\el. mod. numerycznego\Układ Planetarny'
+set xrange[-1.6e11:1.6e11]
+set yrange[-1.6e11:1.6e11]
+filedata1='obiekt 1.data' 
+filedata2='obiekt 2.data'
+n=400
+set term gif animate
+set output 'output.gif'
+do for [j=1:n] {
+k=j*250
+alpha=3.8*pi/400
+a=cos(alpha*(j))*1.5e11
+b=sin(alpha*(j))*1.5e11
+set xrange[-1e9+a:1e9+a]
+set yrange[-1e9+b:1e9+b]
+	
+         set title 'time '.k
+        plot filedata1 using 1:2 every : :k: :k w p pt 7 ps 0.5 , filedata2 using 1:2 every : :k: :k w p pt 7 ps 0.5
+}
+
+cd 'F:\nauka\pwr\rok 2 semestr 4 (letni)\el. mod. numerycznego\Układ Planetarny'
+set xrange[-150:150]
+set yrange[-150:150]
+set xtics 50
+set ytics 50
+set mxtics 5
+set mytics 5
+set linestyle 1 lt 1 lw 2 lc rgb "#B9B9B9"
+set linestyle 2 lt 0 lw 1 lc rgb "#B9B9B9"
+set grid xtics ytics mxtics mytics  ls 1 , ls 2
+filedata1='obiekt 1.data' 
+filedata2='obiekt 2.data'
+
+set term gif animate delay 1
+set output 'output.gif'
+set label 1   at 0,0 point lt -1 pt 7 ps 1 
+n=600
+do for [j=1:n] {
+k=j*100
+         set title 'time '.k
+        plot filedata1 using 1:2   every : :k: :k title "obiekt 1 m=15" w  p pt 7 ps 0.5 , filedata2 using 1:2   every : :k: :k title "obiekt 2 m=3" w p pt 7 ps 0.5,\
+	filedata1 using 1:2   every : :1: :k notitle w l  lc 7 , filedata2 using 1:2   every : :1: :k notitle w l  lc 8
+}
+
+
+cd 'C:\Users\student\Desktop\Układ Planetarny'
+
+
+cd 'F:\nauka\pwr\rok 2 semestr 4 (letni)\el. mod. numerycznego\Układ Planetarny'
+
+plot "czas,Energia,Moment_pedu.data" using 1:2 title "energia" with line ,"czas,Energia,Moment_pedu.data" using 1:3 title "moment pędu" with line
+set mxtics 5
+set mytics 5
+set linestyle 1 lt 1 lw 2 lc rgb "#B9B9B9"
+set linestyle 2 lt 0 lw 1 lc rgb "#B9B9B9"
+set grid xtics ytics mxtics mytics  ls 1 , ls 2
+set xlabel "czas"
+set yrange[-1000:5500]
+set title "wykres energi i momentu pędu w zależności od czasu"
+
+replot
+
+
+cd 'F:\nauka\pwr\rok 2 semestr 4 (letni)\el. mod. numerycznego\Układ Planetarny'
+set xrange[-1.25e10:1.25e10]
+set yrange[ 1.0e11:1.51e11]
+set xtics 1.51e11/ 3/2/2
+set ytics 1.51e11/ 3
+set mxtics 5
+set mytics 5
+set format x "%.1te%.2T"
+set format y "%.1te%.2T"
+set linestyle 1 lt 1 lw 2 lc rgb "#B9B9B9"
+set linestyle 2 lt 0 lw 1 lc rgb "#B9B9B9"
+set grid xtics ytics mxtics mytics  ls 1 , ls 2
+filedata1='obiekt 1.data' 
+
+set term gif animate delay 5 size 740,640
+set output 'output.gif'
+set label 1 "Slonce"   at 0,0 point lt -1 pt 7 ps 1 
+set label 2 "Wenus"  at 0,1.0821e11 point lt -1 pt 7 ps 1 
+n=2500+313
+do for [j=2500-313:n] {
+k=j
+         set title 'wykres orbity ziemi - czas '.(k*3200/60/60/24).' dni'
+        plot filedata1 using 1:2   every : :k: :k notitle w  p pt 7 ps 0.5 ,\
+	filedata1 using 1:2   every : :0: :k notitle w l  , 
+}
+
+
+cd 'F:\nauka\pwr\rok 2 semestr 4 (letni)\el. mod. numerycznego\Układ Planetarny'
+
+plot "wykres.data" using 1:2 title "L^2/2mr^2" with line ,"wykres.data" using 1:3 title "-GmM/r" with line,"wykres.data" using 1:4 title "E" with line
+set mxtics 5
+set mytics 5
+set linestyle 1 lt 1 lw 2 lc rgb "#B9B9B9"
+set linestyle 2 lt 0 lw 1 lc rgb "#B9B9B9"
+set grid xtics ytics mxtics mytics  ls 1 , ls 2
+set xlabel "r"
+set ylabel "V_{eff}"
+set title "potencjał efektywny"
+set yrange [-500:1000]
+set label 1 "r_0 =100 , E=-250" at 100,-250 point pt 7 ps 0.5 offset 0,-1
+replot
+
+
